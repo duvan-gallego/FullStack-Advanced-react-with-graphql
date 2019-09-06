@@ -245,7 +245,7 @@ type PageInfo {
   endCursor: String
 }
 
-enum Premissions {
+enum Permissions {
   ADMIN
   USER
   ITEMCREATE
@@ -276,7 +276,7 @@ type User {
   password: String!
   resetToken: String
   resetTokenExpiry: Float
-  premissions: [Premissions!]!
+  permissions: [Permissions!]!
 }
 
 type UserConnection {
@@ -292,11 +292,11 @@ input UserCreateInput {
   password: String!
   resetToken: String
   resetTokenExpiry: Float
-  premissions: UserCreatepremissionsInput
+  permissions: UserCreatepermissionsInput
 }
 
-input UserCreatepremissionsInput {
-  set: [Premissions!]
+input UserCreatepermissionsInput {
+  set: [Permissions!]
 }
 
 type UserEdge {
@@ -326,7 +326,7 @@ type UserPreviousValues {
   password: String!
   resetToken: String
   resetTokenExpiry: Float
-  premissions: [Premissions!]!
+  permissions: [Permissions!]!
 }
 
 type UserSubscriptionPayload {
@@ -353,7 +353,7 @@ input UserUpdateInput {
   password: String
   resetToken: String
   resetTokenExpiry: Float
-  premissions: UserUpdatepremissionsInput
+  permissions: UserUpdatepermissionsInput
 }
 
 input UserUpdateManyMutationInput {
@@ -362,11 +362,11 @@ input UserUpdateManyMutationInput {
   password: String
   resetToken: String
   resetTokenExpiry: Float
-  premissions: UserUpdatepremissionsInput
+  permissions: UserUpdatepermissionsInput
 }
 
-input UserUpdatepremissionsInput {
-  set: [Premissions!]
+input UserUpdatepermissionsInput {
+  set: [Permissions!]
 }
 
 input UserWhereInput {
