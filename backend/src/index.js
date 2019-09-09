@@ -1,4 +1,5 @@
 const cookieParser = require('cookie-parser');
+const jwt = require('jsonwebtoken');
 require('dotenv').config({ path: 'variables.env' });
 const createServer = require('./createServer');
 
@@ -8,7 +9,16 @@ const server = createServer();
 
 server.express.use(cookieParser());
 
-// TODO: Use express middleware to populate current user
+// decode the JWT so we can get the user Id on eatch request
+server.express.use((req, res, next) => {
+  const { token } = req.cookies;
+  if (token)  {
+    const { userId } = jwt.verify(token, process.env.APP_SECRET);
+    // Put th userid onto the req for future request to access
+    req.userId = userId;       
+  }
+  next();
+});
 
 server.start({
     cors: {
